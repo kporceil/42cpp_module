@@ -1,0 +1,7 @@
+CLAUDE.md
+.cache
+*.json
+*.log
+*.o
+*.d
+*.a
