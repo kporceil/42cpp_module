@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
+#include <cstdio>
 #include <iostream>
 #include <string>
 
@@ -24,6 +25,11 @@ int	main(void) {
 		std::cout << "Hi, what do you want to do ? SEARCH, ADD, or EXIT ?" << std::endl;
 		std::cout << ">> ";
 		std::getline(std::cin, input);
+		if (std::cin.eof())
+		{
+			std::cin.clear();
+			clearerr(stdin);
+		}
 		if (input == "SEARCH")
 			search(book);
 		else if (input == "ADD")

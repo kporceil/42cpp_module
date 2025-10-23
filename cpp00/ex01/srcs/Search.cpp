@@ -28,6 +28,14 @@ void	search(PhoneBook &book) {
 		std::cout << "this is not a valid id" << std::endl;
 		return ;
 	}
-	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	else {
+		char c;
+		std::cin.get(c);
+		if (c != '\n') {
+			std::cout << "this is not a valid id" << std::endl;
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			return ;
+		}
+	}
 	book.displayContact(id);
 }

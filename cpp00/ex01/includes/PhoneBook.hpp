@@ -18,7 +18,8 @@
 class PhoneBook {
 	private:
 		int		_nbContacts;
-		Contact	_contacts[9];
+		int		_nextChange;
+		Contact	_contacts[8];
 	public:
 		PhoneBook(void);
 		
