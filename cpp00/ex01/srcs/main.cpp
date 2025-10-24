@@ -28,9 +28,10 @@ int	main(void) {
 		if (std::cin.eof())
 		{
 			std::cin.clear();
-			clearerr(stdin);
+			std::clearerr(stdin);
+			std::cout << std::endl;
 		}
-		if (input == "SEARCH")
+		else if (input == "SEARCH")
 			search(book);
 		else if (input == "ADD")
 			book.addContact();
