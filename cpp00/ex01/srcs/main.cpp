@@ -28,8 +28,8 @@ int	main(void) {
 		if (std::cin.eof())
 		{
 			std::cin.clear();
-			std::clearerr(stdin);
 			std::cout << std::endl;
+			break ;
 		}
 		else if (input == "SEARCH")
 			search(book);
