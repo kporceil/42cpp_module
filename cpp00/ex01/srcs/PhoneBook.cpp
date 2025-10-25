@@ -30,10 +30,8 @@ first_name:
 	std::cout << "First Name: ";
 	std::getline(std::cin, input);
 	if (std::cin.eof()) {
-		std::cin.clear();
-		clearerr(stdin);
-		std::cout << "A contact field can't be empty" << std::endl;
-		goto first_name;
+		std::cout << std::endl;
+		return ;
 	}
 	if (input.size() == 0) {
 		std::cout << "A contact field can't be empty" << std::endl;
@@ -45,10 +43,8 @@ last_name:
 	std::cout << "Last Name: ";
 	std::getline(std::cin, input);
 	if (std::cin.eof()) {
-		std::cin.clear();
-		clearerr(stdin);
-		std::cout << "A contact field can't be empty" << std::endl;
-		goto last_name;
+		std::cout << std::endl;
+		return ;
 	}
 	if (input.size() == 0) {
 		std::cout << "A contact field can't be empty" << std::endl;
@@ -60,10 +56,8 @@ nickname:
 	std::cout << "Nickname: ";
 	std::getline(std::cin, input);
 	if (std::cin.eof()) {
-		std::cin.clear();
-		clearerr(stdin);
-		std::cout << "A contact field can't be empty" << std::endl;
-		goto nickname;
+		std::cout << std::endl;
+		return ;
 	}
 	if (input.size() == 0) {
 		std::cout << "A contact field can't be empty" << std::endl;
@@ -75,10 +69,8 @@ phone_number:
 	std::cout << "Phone Number: ";
 	std::getline(std::cin, input);
 	if (std::cin.eof()) {
-		std::cin.clear();
-		clearerr(stdin);
-		std::cout << "A contact field can't be empty" << std::endl;
-		goto phone_number;
+		std::cout << std::endl;
+		return ;
 	}
 	if (input.size() == 0) {
 		std::cout << "A contact field can't be empty" << std::endl;
@@ -90,10 +82,8 @@ darkest_secret:
 	std::cout << "Darkest Secret: ";
 	std::getline(std::cin, input);
 	if (std::cin.eof()) {
-		std::cin.clear();
-		clearerr(stdin);
-		std::cout << "A contact field can't be empty" << std::endl;
-		goto darkest_secret;
+		std::cout << std::endl;
+		return ;
 	}
 	if (input.size() == 0) {
 		std::cout << "A contact field can't be empty" << std::endl;

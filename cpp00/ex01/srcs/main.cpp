@@ -39,6 +39,11 @@ int	main(void) {
 			break ;
 		else
 			std::cout << "Wrong operation" << std::endl;
+		if (std::cin.eof())
+		{
+			std::cin.clear();
+			break ;
+		}
 	}
 
 	return (0);

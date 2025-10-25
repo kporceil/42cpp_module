@@ -22,6 +22,8 @@ void	search(PhoneBook &book) {
 	std::cout << "Select a contact id: ";
 	std::cin >> id;
 	std::cout << std::endl;
+	if (std::cin.eof())
+		return ;
 	if (std::cin.fail() || id >= book.getContactNb()) {
 		std::cin.clear();
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
