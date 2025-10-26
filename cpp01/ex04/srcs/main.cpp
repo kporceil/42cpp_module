@@ -15,7 +15,7 @@
 #include <sstream>
 
 int	main(int argc, char **argv) {
-	if (argc != 4) {
+	if (argc != 4 || !argv[2][0]) {
 		std::cerr << "Bad usage: use: sed [FILE] [SEARCH] [REPLACE]" << std::endl;
 		return (1);
 	}

@@ -14,14 +14,18 @@
 #include <iostream>
 
 Zombie::Zombie(void) {
-	std::cout << ": BraiiiiiiinnnzzzZ..." << std::endl;
+	std::cout << "Zombie: Default constructor called" << std::endl;
 	return ;
 }
 
 
 Zombie::Zombie(std::string &name): _name(name) {
-	std::cout << name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+	std::cout << name << "Zombie: parameter constructor called" << std::endl;
 	return ;
+}
+
+void	Zombie::announce(void) {
+	std::cout << this->_name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
 
 Zombie::~Zombie(void) {
