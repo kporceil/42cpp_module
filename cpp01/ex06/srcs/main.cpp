@@ -12,6 +12,20 @@
 
 #include "Harl.hpp"
 #include <iostream>
+#include <string>
+
+size_t	getLevel(char *complain) {
+	std::string	levels[4] = {
+		"DEBUG",
+		"INFO",
+		"WARNING",
+		"ERROR",
+	};
+	size_t		i;
+
+	for (i = 0; levels[i].compare(complain) != 0 && i < 4; ++i);
+	return (i);
+}
 
 int	main(int argc, char **argv) {
 	if (argc != 2) {
@@ -20,21 +34,22 @@ int	main(int argc, char **argv) {
 	}
 
 	Harl	harl;
+	size_t	level = getLevel(argv[1]);
 
-	switch (argv[1][0]) {
-		case ('D'):
+	switch (level) {
+		case (0):
 			std::cout << "[DEBUG]" << std::endl;
 			harl.complain("DEBUG");
 			std::cout << std::endl;
-		case ('I'):
+		case (1):
 			std::cout << "[INFO]" << std::endl;
 			harl.complain("INFO");
 			std::cout << std::endl;
-		case ('W'):
+		case (2):
 			std::cout << "[WARNING]" << std::endl;
 			harl.complain("WARNING");
 			std::cout << std::endl;
-		case ('E'):
+		case (3):
 			std::cout << "[ERROR]" << std::endl;
 			harl.complain("ERROR");
 			std::cout << std::endl;
