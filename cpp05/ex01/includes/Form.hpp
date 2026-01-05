@@ -32,6 +32,7 @@ class Form {
 				char const	*what() const throw();
 		};
 		class GradeTooLowException : public std::exception {
+			public:
 				char const	*what() const throw();
 		};
 
