@@ -6,12 +6,14 @@
 /*   By: kporceil <kporceil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 13:38:13 by kporceil          #+#    #+#             */
-/*   Updated: 2026/01/05 14:16:03 by kporceil         ###   ########lyon.fr   */
+/*   Updated: 2026/01/05 18:25:11 by kporceil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 #include "iostream"
+#include <exception>
 
 Bureaucrat::Bureaucrat(): m_name("Unitialized"), m_grade(150) {};
 
@@ -41,6 +43,15 @@ std::string const&	Bureaucrat::getName() const {
 
 unsigned char	Bureaucrat::getGrade() const {
 	return (m_grade);
+}
+
+void	Bureaucrat::signForm(Form& form) {
+	try {
+		form.beSigned(*this);
+		std::cout << m_name << " signed " << form.getName();
+	} catch (std::exception& e) {
+		std::cout << m_name << " couldn't sign " << form.getName() << " because " << e.what();
+	}
 }
 
 Bureaucrat&	Bureaucrat::operator=(Bureaucrat const& cpy) {

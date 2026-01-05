@@ -6,7 +6,7 @@
 /*   By: kporceil <kporceil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 13:00:17 by kporceil          #+#    #+#             */
-/*   Updated: 2026/01/05 14:11:20 by kporceil         ###   ########lyon.fr   */
+/*   Updated: 2026/01/05 18:22:48 by kporceil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define BUREAUCRAT_HPP
 
 # include <string>
+
+class Form;
 
 class Bureaucrat {
 	private:
@@ -37,6 +39,7 @@ class Bureaucrat {
 
 		std::string const&	getName() const;
 		unsigned char		getGrade() const;
+		void				signForm(Form& form);
 
 		Bureaucrat&	operator=(Bureaucrat const& cpy);
 

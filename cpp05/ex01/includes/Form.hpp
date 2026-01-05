@@ -1,48 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
+/*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kporceil <kporceil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/05 13:00:17 by kporceil          #+#    #+#             */
-/*   Updated: 2026/01/05 14:11:20 by kporceil         ###   ########lyon.fr   */
+/*   Created: 2026/01/05 15:45:34 by kporceil          #+#    #+#             */
+/*   Updated: 2026/01/05 17:48:53 by kporceil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUREAUCRAT_HPP
-# define BUREAUCRAT_HPP
+#ifndef FORM_HPP
+# define FORM_HPP
 
-# include <string>
+#include "Bureaucrat.hpp"
+#include <string>
 
-class Bureaucrat {
+class Form {
 	private:
 		std::string const	m_name;
-		unsigned char		m_grade;
+		bool				m_signState;
+		int const			m_signGrade;
+		int const			m_execGrade;
 	public:
-		Bureaucrat();
-		Bureaucrat(unsigned char grade);
-		Bureaucrat(const std::string& name);
-		Bureaucrat(const std::string& name, unsigned char grade);
-		Bureaucrat(Bureaucrat const& cpy);
+		Form();
+		Form(std::string const& name, int const signGrade, int const execGrade);
+		Form(const Form& cpy);
 
 		class GradeTooHighException : public std::exception {
 			public:
 				char const	*what() const throw();
 		};
 		class GradeTooLowException : public std::exception {
-			public:
 				char const	*what() const throw();
 		};
 
 		std::string const&	getName() const;
-		unsigned char		getGrade() const;
+		int	getSignGrade() const;
+		int	getExecGrade() const;
+		int	getSignState() const;
 
-		Bureaucrat&	operator=(Bureaucrat const& cpy);
+		void	beSigned(Bureaucrat const& bc);
 
-		~Bureaucrat();
+		~Form();
+
+		Form& operator=(const Form& cpy);
 };
 
-std::ostream&	operator<<(std::ostream& os, const Bureaucrat& bc);
+std::ostream&	operator<<(std::ostream& os, const Form& form);
 
 #endif
