@@ -19,7 +19,7 @@ int	main(void) {
 	Data	*unconvert = Serialize::deserialize(convert);
 
 	std::cout << "Data Pointer: " << &test << " int value: " << test.value << std::endl;
-	std::cout << "Serialized value: " << std::showbase << std::hex << convert << std::dec << std::endl;
+	std::cout << "Serialized value: " << std::showbase << std::hex << convert << std::dec << std::noshowbase << std::endl;
 	std::cout << "Unserialized value: " << unconvert << " int value: " << unconvert->value << std::endl;
 	return (0);
 }
