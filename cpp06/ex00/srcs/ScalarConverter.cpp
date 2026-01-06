@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ScalarConverter.hpp"
+#include "ScalarConverter.hpp"
 #include <cctype>
 #include <cmath>
 #include <cstdlib>
@@ -30,7 +30,13 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter& cpy) { (void)
 
 void	ScalarConverter::convert(std::string const& litteral) {
 	try {
-		double	dnb = std::strtod(litteral.c_str(), NULL);
+		char*	check;
+		double	dnb = std::strtod(litteral.c_str(), &check);
+		if (*check != '\0' && (*check != 'f' || *(check + 1) != '\0'))
+		{
+			std::cout << "cannot perform conversion" << std::endl;
+			return ;
+		}
 		if (!std::isnan(dnb) && !std::isinf(dnb) && static_cast<double>(std::numeric_limits<char>::min()) < dnb && static_cast<double>(std::numeric_limits<char>::max()) > dnb) {
 			std::cout << "char: ";
 			if (std::isprint(static_cast<char>(dnb)))
