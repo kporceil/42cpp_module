@@ -28,7 +28,17 @@ ScalarConverter::~ScalarConverter() {};
 
 ScalarConverter& ScalarConverter::operator=(const ScalarConverter& cpy) { (void)cpy; return (*this); }
 
+static int	isInteger(double nb)
+{
+	return (nb == std::floor(nb));
+}
+
 void	ScalarConverter::convert(std::string const& litteral) {
+	if (litteral.empty())
+	{
+		std::cout << "cannot perform conversion" << std::endl;
+		return ;
+	}
 	try {
 		char*	check;
 		double	dnb = std::strtod(litteral.c_str(), &check);
@@ -37,7 +47,7 @@ void	ScalarConverter::convert(std::string const& litteral) {
 			std::cout << "cannot perform conversion" << std::endl;
 			return ;
 		}
-		if (!std::isnan(dnb) && !std::isinf(dnb) && static_cast<double>(std::numeric_limits<char>::min()) < dnb && static_cast<double>(std::numeric_limits<char>::max()) > dnb) {
+		if (!std::isnan(dnb) && !std::isinf(dnb) && static_cast<double>(std::numeric_limits<char>::min()) <= dnb && static_cast<double>(std::numeric_limits<char>::max()) >= dnb) {
 			std::cout << "char: ";
 			if (std::isprint(static_cast<char>(dnb)))
 				std::cout << static_cast<char>(dnb);
@@ -47,13 +57,13 @@ void	ScalarConverter::convert(std::string const& litteral) {
 		} else {
 			std::cout << "char: impossible" << std::endl;
 		}
-		if (!std::isnan(dnb) && !std::isinf(dnb) && static_cast<double>(std::numeric_limits<int>::min()) < dnb && static_cast<double>(std::numeric_limits<int>::max()) > dnb) {
+		if (!std::isnan(dnb) && !std::isinf(dnb) && static_cast<double>(std::numeric_limits<int>::min()) <= dnb && static_cast<double>(std::numeric_limits<int>::max()) >= dnb) {
 			std::cout << "int: " << static_cast<int>(dnb) << std::endl;
 		} else {
 			std::cout << "int: impossible" << std::endl;
 		}
-		std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(dnb) << 'f' << std::endl;
-		std::cout << "double: " << dnb << std::endl;
+		std::cout << "float: " << std::fixed << std::setprecision(isInteger(dnb) && !std::isinf(dnb) ? 1 : 3) << static_cast<float>(dnb) << "f" << std::endl;
+		std::cout << "double: " << std::fixed << std::setprecision(isInteger(dnb) && !std::isinf(dnb) ? 1 : 3) << dnb << std::endl;
 	} catch (std::exception& e) {
 		std::cout << "cannot perform conversion because: " << e.what() << std::endl;
 		return ;
