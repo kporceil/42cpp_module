@@ -79,6 +79,32 @@ PmergeMe::sort ()
   std::cout << "After: ";
   print (m_deq);
 
+  for (size_t i = 0; i < m_vec.size (); ++i)
+    {
+      if (i > 0 && m_vec[i] < m_vec[i - 1])
+        {
+          std::cout << "vector not sorted" << std::endl;
+          break;
+        }
+      if (i == m_vec.size () - 1)
+        {
+          std::cout << "vector sorted" << std::endl;
+        }
+    }
+
+  for (size_t i = 0; i < m_deq.size (); ++i)
+    {
+      if (i > 0 && m_deq[i] < m_deq[i - 1])
+        {
+          std::cout << "deque not sorted" << std::endl;
+          break;
+        }
+      if (i == m_deq.size () - 1)
+        {
+          std::cout << "deque sorted" << std::endl;
+        }
+    }
+
   std::cout << "Time to process a range of " << m_vec.size ()
             << " elements with std::vector : " << timeVec << "us\n";
   std::cout << "Time to process a range of " << m_deq.size ()

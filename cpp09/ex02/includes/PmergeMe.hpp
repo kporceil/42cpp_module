@@ -113,9 +113,7 @@ PmergeMe::fordJohnson (Container &c)
       int idx = insertionOrder[i];
       int val = sortedPairs[idx + 1].second;
 
-      int upperBoundVal = sortedPairs[idx + 1].first;
-      typename Container::iterator end_it
-          = std::upper_bound (chain.begin (), chain.end (), upperBoundVal);
+      typename Container::iterator end_it = chain.begin () + idx + i + 3;
       typename Container::iterator pos
           = std::lower_bound (chain.begin (), end_it, val);
       chain.insert (pos, val);
