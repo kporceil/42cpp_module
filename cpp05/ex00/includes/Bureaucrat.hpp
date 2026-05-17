@@ -11,38 +11,45 @@
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP
-# define BUREAUCRAT_HPP
+#define BUREAUCRAT_HPP
 
-# include <string>
+#include <string>
 
-class Bureaucrat {
-	private:
-		std::string const	m_name;
-		unsigned char		m_grade;
+class Bureaucrat
+{
+private:
+	std::string const m_name;
+	unsigned char	  m_grade;
+
+public:
+	Bureaucrat();
+	Bureaucrat(unsigned char grade);
+	Bureaucrat(std::string const& name);
+	Bureaucrat(std::string const& name, unsigned char grade);
+	Bureaucrat(Bureaucrat const& cpy);
+
+	class GradeTooHighException : public std::exception
+	{
 	public:
-		Bureaucrat();
-		Bureaucrat(unsigned char grade);
-		Bureaucrat(const std::string& name);
-		Bureaucrat(const std::string& name, unsigned char grade);
-		Bureaucrat(Bureaucrat const& cpy);
+		char const* what() const throw();
+	};
+	class GradeTooLowException : public std::exception
+	{
+	public:
+		char const* what() const throw();
+	};
 
-		class GradeTooHighException : public std::exception {
-			public:
-				char const	*what() const throw();
-		};
-		class GradeTooLowException : public std::exception {
-			public:
-				char const	*what() const throw();
-		};
+	void incrementGrade();
+	void decrementGrade();
 
-		std::string const&	getName() const;
-		unsigned char		getGrade() const;
+	std::string const& getName() const;
+	unsigned char	   getGrade() const;
 
-		Bureaucrat&	operator=(Bureaucrat const& cpy);
+	Bureaucrat& operator=(Bureaucrat const& cpy);
 
-		~Bureaucrat();
+	~Bureaucrat();
 };
 
-std::ostream&	operator<<(std::ostream& os, const Bureaucrat& bc);
+std::ostream& operator<<(std::ostream& os, Bureaucrat const& bc);
 
 #endif
